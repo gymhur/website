@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import posthog from 'posthog-js';
 
 const productOptions = [
   'Gym Wear', 'Leggings', 'Team Uniforms', 'Hurling Balls', 'Weightlifting Accessories', 'Other',
@@ -31,9 +32,20 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      setStatus(res.ok ? 'success' : 'error');
+      if (res.ok) {
+        setStatus('success');
+        posthog.capture('quote_requested', {
+          product_interest: form.product,
+          has_phone: !!form.phone,
+          has_company: !!form.company,
+        });
+      } else {
+        setStatus('error');
+        posthog.capture('contact_form_error', { reason: 'server_error' });
+      }
     } catch {
       setStatus('error');
+      posthog.capture('contact_form_error', { reason: 'network_error' });
     }
   };
 

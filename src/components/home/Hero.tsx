@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import posthog from 'posthog-js';
 
 interface Props {
   headline: string;
@@ -22,12 +24,14 @@ export default function Hero({ headline, subheadline, ctaText }: Props) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/contact"
+            onClick={() => posthog.capture('hero_cta_clicked', { cta_text: ctaText })}
             className="bg-brand hover:bg-brand-dark text-white font-semibold px-8 py-4 rounded-lg transition-colors text-base"
           >
             {ctaText}
           </Link>
           <Link
             href="/products"
+            onClick={() => posthog.capture('hero_products_clicked')}
             className="border border-gray-300 hover:border-gray-400 text-text-primary font-semibold px-8 py-4 rounded-lg transition-colors text-base"
           >
             View Products

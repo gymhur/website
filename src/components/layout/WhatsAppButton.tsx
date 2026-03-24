@@ -1,3 +1,6 @@
+'use client';
+import posthog from 'posthog-js';
+
 interface Props {
   phoneNumber: string;
 }
@@ -9,6 +12,7 @@ export default function WhatsAppButton({ phoneNumber }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={() => posthog.capture('whatsapp_clicked')}
       className="fixed bottom-6 right-6 z-50 bg-whatsapp hover:scale-110 transition-transform text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">

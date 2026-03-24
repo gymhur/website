@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { getPostHogClient } from '@/lib/posthog-server';
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -27,6 +28,13 @@ export async function POST(req: NextRequest) {
         <p>${message.replace(/\n/g, '<br/>')}</p>
       `,
     });
+
+    const posthog = getPostHogClient();
+    posthog.capture({
+      distinctId: 'anonymous',
+      event: 'contact_submitted',
+    });
+    await posthog.shutdown();
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

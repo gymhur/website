@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import posthog from 'posthog-js';
 
 export default function CtaBanner() {
   return (
@@ -12,6 +14,7 @@ export default function CtaBanner() {
         </p>
         <Link
           href="/contact"
+          onClick={() => posthog.capture('cta_banner_clicked')}
           className="inline-block bg-brand hover:bg-brand-dark text-white font-semibold px-10 py-4 rounded-lg transition-colors text-base"
         >
           Get a Quote

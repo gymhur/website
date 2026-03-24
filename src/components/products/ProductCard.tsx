@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import posthog from 'posthog-js';
 
 interface Product {
   name: string;
@@ -26,6 +28,7 @@ export default function ProductCard({ product }: Props) {
         )}
         <Link
           href={`/contact?product=${encodeURIComponent(product.name)}`}
+          onClick={() => posthog.capture('product_quote_requested', { product_name: product.name, category_slug: product.categorySlug })}
           className="block text-center bg-brand hover:bg-brand-dark text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors"
         >
           Request a Quote

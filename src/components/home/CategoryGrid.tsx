@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import posthog from 'posthog-js';
 
 interface Category {
   name: string;
@@ -33,6 +35,7 @@ export default function CategoryGrid({ categories }: Props) {
             <Link
               key={cat.slug}
               href={`/products/${cat.slug}`}
+              onClick={() => posthog.capture('category_selected', { category_name: cat.name, category_slug: cat.slug })}
               className="group bg-surface rounded-xl p-8 border border-gray-100 hover:border-brand/30 hover:shadow-md transition-all"
             >
               <div className="w-12 h-12 rounded-lg bg-brand/10 mb-5" />
