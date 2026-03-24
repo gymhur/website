@@ -34,7 +34,6 @@ export async function POST(req: NextRequest) {
       distinctId: 'anonymous',
       event: 'contact_submitted',
     });
-    await posthog.shutdown();
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
