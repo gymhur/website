@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
+    if (!process.env.NEXT_PUBLIC_POSTHOG_HOST) return [];
     return [
       {
         source: '/ingest/static/:path*',
