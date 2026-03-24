@@ -6,6 +6,7 @@ import { productCategory, product, siteSettings, homePage, aboutPage } from './s
 export default defineConfig({
   name: 'gymhur',
   title: 'Gymhur CMS',
+  basePath: '/studio',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   plugins: [structureTool(), visionTool()],
