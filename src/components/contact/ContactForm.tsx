@@ -43,9 +43,10 @@ export default function ContactForm() {
         setStatus('error');
         posthog.capture('contact_form_error', { reason: 'server_error' });
       }
-    } catch {
+    } catch (err) {
       setStatus('error');
       posthog.capture('contact_form_error', { reason: 'network_error' });
+      posthog.captureException(err);
     }
   };
 

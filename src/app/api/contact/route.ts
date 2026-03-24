@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await resend.emails.send({
-      from: 'Gymhur Contact Form <onboarding@resend.dev>',
+      from: 'Gymhur Contact Form <contact@gymhur.com>',
       to: process.env.CONTACT_EMAIL!,
       subject: `New Quote Request from ${name}`,
       html: `

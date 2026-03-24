@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { client } from '@/lib/sanity/client';
+import ProductQuoteCta from '@/components/products/ProductQuoteCta';
 
 interface PageProps {
   params: { category: string; slug: string };
@@ -35,12 +36,7 @@ export default async function ProductPage({ params }: PageProps) {
           {product.moq && (
             <p className="text-sm font-semibold text-brand mb-8">Minimum Order: {product.moq}</p>
           )}
-          <Link
-            href={`/contact?product=${encodeURIComponent(product.name)}`}
-            className="inline-block bg-brand hover:bg-brand-dark text-white font-semibold px-8 py-4 rounded-lg transition-colors"
-          >
-            Request a Quote
-          </Link>
+          <ProductQuoteCta productName={product.name} categorySlug={params.category} />
         </div>
       </div>
     </main>
