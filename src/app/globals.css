@@ -1,4 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@font-face {
+  font-family: 'Config Condensed';
+  src: url('/fonts/config-condensed/ConfigCondensedRegular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Config Condensed';
+  src: url('/fonts/config-condensed/ConfigCondensedMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Config Condensed';
+  src: url('/fonts/config-condensed/ConfigCondensedSemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Config Condensed';
+  src: url('/fonts/config-condensed/ConfigCondensedBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Config Condensed';
+  src: url('/fonts/config-condensed/ConfigCondensedExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +44,7 @@
 
 @layer base {
   html {
-    font-family: 'Inter', sans-serif;
-    color: #232323;
+    font-family: 'Config Condensed', sans-serif;
+    color: #213541;
   }
 }
