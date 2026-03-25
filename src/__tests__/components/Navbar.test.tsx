@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import Navbar from '../../components/layout/Navbar';
 
-test('renders logo text', () => {
+test('renders Gymhur logo', () => {
   render(<Navbar />);
-  expect(screen.getByText(/gymhur/i)).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: /gymhur/i })).toBeInTheDocument();
 });
 
 test('renders Get a Quote link', () => {
