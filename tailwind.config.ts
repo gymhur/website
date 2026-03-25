@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: '#6528F7',
-        'brand-dark': '#4F1FBF',
+        brand: '#3D7F8A',
+        'brand-dark': '#2B5F6B',
         surface: '#F8F8F8',
-        'text-primary': '#0F0F0F',
+        'text-primary': '#232323',
         'text-secondary': '#6B7280',
         whatsapp: '#25D366',
       },
